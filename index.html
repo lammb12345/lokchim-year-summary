@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>לוקחים אחריות · סיכום שנת פעילות</title>
+<meta name="robots" content="noindex">
+<style>
+/* ===== fonts ===== */
+@font-face{font-family:'Anomalia';src:url('fonts/anomalia-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Anomalia';src:url('fonts/anomalia-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'AnomaliaHollow';src:url('fonts/anomalia-hollow.woff2') format('woff2');font-weight:800;font-display:swap}
+@font-face{font-family:'Ploni';src:url('fonts/ploni-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Ploni';src:url('fonts/ploni-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Ploni';src:url('fonts/ploni-700.woff2') format('woff2');font-weight:700;font-display:swap}
+
+/* ===== tokens ===== */
+:root{
+  --navy:#1E3A5F; --navy-deep:#152B47;
+  --coral:#E8604C; --coral-soft:#F2907F;
+  --teal:#1FA396;
+  --cream:#F6F1E7; --cream-warm:#FBF6EC;
+  --ink:#22334A; --gold:#D9A44B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+body{font-family:'Ploni',system-ui,sans-serif;color:var(--ink);background:var(--cream)}
+
+.slide{position:relative;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:linear-gradient(160deg,var(--cream-warm),var(--cream))}
+.slide.dark{background:linear-gradient(165deg,var(--navy-deep),var(--navy));color:var(--cream-warm)}
+.inner{position:relative;z-index:3;width:min(1100px,93vw);padding:clamp(1.2rem,3vh,2.6rem) 0}
+
+.ribbon{position:absolute;border-radius:200px;pointer-events:none;z-index:1;
+  animation:ribbonDrift 18s ease-in-out infinite alternate}
+.ribbon.r1{width:52vw;height:9vw;background:linear-gradient(90deg,var(--coral),var(--coral-soft));
+  transform:rotate(-38deg);top:-4vw;left:-14vw;opacity:.9}
+.ribbon.r2{width:38vw;height:6.5vw;background:var(--teal);transform:rotate(-38deg);
+  bottom:2vw;right:-12vw;opacity:.55;animation-delay:-6s}
+.ribbon.r3{width:30vw;height:5vw;background:var(--navy);transform:rotate(-38deg);
+  bottom:-6vw;left:18vw;opacity:.25;animation-delay:-11s}
+.slide.dark .ribbon.r3{background:var(--cream-warm);opacity:.08}
+.ribbon.thin{height:2.2vw;opacity:.35}
+@keyframes ribbonDrift{from{translate:0 0}to{translate:2.4vw 1.6vw}}
+
+.bg-dots::after{content:"";position:absolute;inset:0;z-index:1;
+  background-image:radial-gradient(rgba(30,58,95,.10) 1.5px,transparent 1.5px);
+  background-size:34px 34px;animation:dotShift 26s linear infinite}
+@keyframes dotShift{to{background-position:34px 34px}}
+.bg-sweep::after{content:"";position:absolute;inset:-40%;z-index:1;
+  background:conic-gradient(from 0deg,transparent 70%,rgba(232,96,76,.07) 82%,transparent 94%);
+  animation:sweep 22s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.bg-orbs::after{content:"";position:absolute;inset:0;z-index:1;
+  background:radial-gradient(28vw 28vw at 82% 18%,rgba(31,163,150,.13),transparent 60%),
+             radial-gradient(24vw 24vw at 12% 84%,rgba(232,96,76,.11),transparent 60%);
+  animation:orbPulse 14s ease-in-out infinite alternate}
+@keyframes orbPulse{to{opacity:.55;transform:scale(1.06)}}
+.slide.dark .bg-orbs::after{background:radial-gradient(30vw 30vw at 80% 20%,rgba(232,96,76,.2),transparent 60%),
+  radial-gradient(26vw 26vw at 15% 85%,rgba(31,163,150,.16),transparent 60%)}
+
+/* ===== typography ===== */
+.kicker{font-weight:700;font-size:clamp(.82rem,1.1vw,1rem);letter-spacing:.14em;color:var(--coral);margin-bottom:1rem}
+.slide.dark .kicker{color:var(--coral-soft)}
+h1{font-family:'Anomalia';font-weight:700;letter-spacing:-.018em;color:var(--navy);
+  font-size:clamp(2.6rem,6.2vw,5rem);line-height:1.04}
+.slide.dark h1{color:var(--cream-warm)}
+h2{font-family:'Anomalia';font-weight:700;letter-spacing:-.018em;color:var(--navy);
+  font-size:clamp(1.8rem,3.4vw,2.9rem);line-height:1.1;margin-bottom:clamp(.7rem,1.8vh,1.3rem)}
+.slide.dark h2{color:var(--cream-warm)}
+.lede{font-size:clamp(1rem,1.3vw,1.25rem);line-height:1.6;max-width:46rem;font-weight:400}
+.slide.dark .lede{color:rgba(251,246,236,.88)}
+.num-giant{font-family:'AnomaliaHollow','Anomalia';font-weight:800;
+  font-size:clamp(4rem,10.5vw,8.5rem);line-height:1;color:var(--coral)}
+.slide-tag{position:absolute;bottom:1.2rem;left:1.6rem;z-index:4;font-size:.72rem;font-weight:600;
+  letter-spacing:.12em;color:rgba(34,51,74,.4)}
+.slide.dark .slide-tag{color:rgba(251,246,236,.35)}
+
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.slide.seen [data-reveal]{opacity:1;transform:none}
+.slide.seen .d1[data-reveal]{transition-delay:.12s}
+.slide.seen .d2[data-reveal]{transition-delay:.24s}
+.slide.seen .d3[data-reveal]{transition-delay:.38s}
+.slide.seen .d4[data-reveal]{transition-delay:.52s}
+.slide.seen .d5[data-reveal]{transition-delay:.66s}
+
+.edge{border-right:3px solid var(--coral);padding-right:1.1rem;margin:1.1rem 0}
+.edge.t{border-right-color:var(--teal)}
+.edge.g{border-right-color:var(--gold)}
+.slide.dark .edge{border-right-color:var(--coral-soft)}
+
+.medal{position:relative;margin:0 auto 1rem;width:clamp(6rem,10vw,9rem);height:clamp(6rem,10vw,9rem)}
+.medal::before{content:"";position:absolute;inset:-16%;border-radius:50%;filter:blur(22px);opacity:.5;z-index:0;background:var(--halo,var(--coral))}
+.medal img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:50%;
+  box-shadow:0 18px 40px -18px rgba(30,58,95,.45)}
+.medal.sm{width:clamp(4.6rem,7vw,6.2rem);height:clamp(4.6rem,7vw,6.2rem);margin-bottom:.7rem}
+.medal.side{margin:0 0 1rem}
+
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,3vw,3rem);margin-top:clamp(1.2rem,3vh,2.4rem)}
+.tri{text-align:center}
+.tri h3{font-family:'Anomalia';font-weight:700;font-size:clamp(1.15rem,1.7vw,1.5rem);color:var(--navy);margin-bottom:.35rem}
+.tri p{font-size:clamp(.88rem,1.05vw,1rem);line-height:1.5;max-width:16rem;margin:0 auto}
+.slide.dark .tri h3{color:var(--cream-warm)}
+.slide.dark .tri p{color:rgba(251,246,236,.8)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,3vw,3rem);align-items:start;margin-top:2rem}
+.stats.two{grid-template-columns:repeat(2,1fr);max-width:44rem}
+.stat{text-align:center}
+.stat .num-giant{display:block}
+.stat p{font-size:clamp(.9rem,1.1vw,1.05rem);line-height:1.5;max-width:15rem;margin:.6rem auto 0}
+.stat:nth-child(2) .num-giant{color:var(--teal)}
+.stat:nth-child(3) .num-giant{color:var(--gold)}
+.src{margin-top:2rem;font-size:.8rem;color:rgba(34,51,74,.55)}
+.slide.dark .src{color:rgba(251,246,236,.45)}
+
+/* נתון להשלמה */
+.fill{color:var(--gold)!important;border-bottom:4px dashed rgba(217,164,75,.55);padding-bottom:.4rem}
+.fillnote{margin-top:1.6rem;font-size:.82rem;font-weight:600;color:var(--gold)}
+
+blockquote{font-family:'Anomalia';font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);
+  line-height:1.35;color:var(--navy);max-width:52rem}
+blockquote .q-hl{font-weight:700;color:var(--coral)}
+.slide.dark blockquote{color:var(--cream-warm)}
+cite{display:block;font-style:normal;font-weight:600;font-size:clamp(.88rem,1.1vw,1rem);margin-top:1.4rem;color:var(--teal)}
+
+.cta-glow{position:relative;display:inline-block;margin-top:2rem;padding:1.1rem 2.6rem;border-radius:100px;
+  font-weight:700;font-size:clamp(1.05rem,1.5vw,1.3rem);color:var(--navy-deep);
+  background:radial-gradient(circle at 50% 0%,#FFE9C9,var(--gold));
+  box-shadow:0 22px 60px -18px rgba(217,164,75,.65)}
+.contact{margin-top:1.6rem;font-size:clamp(.95rem,1.2vw,1.1rem);color:rgba(251,246,236,.8)}
+.contact b{color:var(--cream-warm)}
+
+@media (max-width:760px){
+  .trio,.stats{grid-template-columns:1fr;gap:1.3rem}
+  .stats.two{grid-template-columns:1fr}
+  .ribbon{opacity:.4}
+}
+@media (max-height:720px){
+  h2{margin-bottom:.5rem}
+  .num-giant{font-size:clamp(3.2rem,8.5vw,6rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 01 שער -->
+<section class="slide dark bg-orbs" id="s1">
+  <div class="ribbon r1" style="opacity:.35"></div><div class="ribbon r2 thin" style="opacity:.3"></div>
+  <div class="inner">
+    <div class="medal side" data-reveal style="--halo:var(--gold)"><img src="img/3d/lion.webp" alt=""></div>
+    <div class="kicker d1" data-reveal>לוקחים אחריות · משנים מציאות ברשת</div>
+    <h1 class="d1" data-reveal>שנה של עשייה,<br>במספרים</h1>
+    <p class="lede d2" data-reveal style="margin-top:1.4rem">סיכום שנת הפעילות של העמותה, לשותפים ולתורמים שלנו. מחלקה אחר מחלקה, מספר אחר מספר.</p>
+    <p class="d3" data-reveal style="margin-top:2.2rem;font-weight:600;color:var(--teal)">דעאל פסנטין, מנכ"ל · אלול תשפ"ו</p>
+  </div>
+  <div class="slide-tag">01</div>
+</section>
+
+<!-- 02 דבר המנכ"ל -->
+<section class="slide bg-sweep" id="s2">
+  <div class="inner">
+    <div class="kicker" data-reveal>דבר המנכ"ל</div>
+    <h2 class="d1" data-reveal>כמה מילים לפני המספרים</h2>
+    <div class="edge g d2" data-reveal>
+      <p class="lede" style="color:var(--gold);font-weight:600">[כאן נכנסת פסקת ההיכרות האישית של דעאל: מי אני, מאיפה הגעתי, ומה פגשתי בשנה הראשונה בתפקיד]</p>
+    </div>
+    <p class="lede d3" data-reveal style="margin-top:1.4rem">בעמודים הבאים ריכזנו את מה שעשינו יחד השנה. לא הכל נכנס, אבל המספרים המרכזיים כאן, והם מספרים את הסיפור בעצמם.</p>
+  </div>
+  <div class="slide-tag">02</div>
+</section>
+
+<!-- 03 המרכז החינוכי -->
+<section class="slide bg-dots" id="s3">
+  <div class="ribbon r2" style="opacity:.3"></div>
+  <div class="inner">
+    <div class="medal sm side" data-reveal style="--halo:var(--coral)"><img src="img/3d/school.webp" alt=""></div>
+    <div class="kicker" data-reveal>המרכז החינוכי</div>
+    <h2 class="d1" data-reveal>בתוך בתי הספר, לאורך כל השנה</h2>
+    <div class="stats">
+      <div class="stat d1" data-reveal><span class="num-giant">101</span><p>מוסדות חינוך שפעלנו בהם השנה, בכל רחבי הארץ</p></div>
+      <div class="stat d2" data-reveal><span class="num-giant">110</span><p>הרצאות לתלמידים, להורים ולצוותי חינוך</p></div>
+      <div class="stat d3" data-reveal><span class="num-giant">100</span><p>סדנאות עומק בכיתות</p></div>
+    </div>
+    <div class="edge t d4" data-reveal style="margin-top:2rem"><p class="lede">ומעבר לאירוע הבודד: 14 בתי ספר בתהליך ליווי מתמשך, עם 66 מפגשי עומק לאורך השנה עם הצוות החינוכי.</p></div>
+  </div>
+  <div class="slide-tag">03</div>
+</section>
+
+<!-- 04 מחלקת תוכן: הפורטל -->
+<section class="slide bg-sweep" id="s4">
+  <div class="inner">
+    <div class="medal sm side" data-reveal style="--halo:var(--teal)"><img src="img/3d/laptop.webp" alt=""></div>
+    <div class="kicker" data-reveal>מחלקת תוכן</div>
+    <h2 class="d1" data-reveal>הלמידה הגיעה עד הבית</h2>
+    <p class="lede d1" data-reveal>השנה עלה לאוויר פורטל הקורסים החדש שלנו. כל הקורסים הדיגיטליים במקום אחד, עם מעקב התקדמות, משימות ובונוסים לכל משתתף.</p>
+    <div class="stats two">
+      <div class="stat d2" data-reveal><span class="num-giant">9</span><p>קורסים דיגיטליים פעילים בפורטל</p></div>
+      <div class="stat d3" data-reveal><span class="num-giant">1,200+</span><p>הרשמות לקורסים בשנה האחרונה</p></div>
+    </div>
+  </div>
+  <div class="slide-tag">04</div>
+</section>
+
+<!-- 05 הקהילות -->
+<section class="slide bg-orbs" id="s5">
+  <div class="ribbon r3" style="opacity:.18"></div>
+  <div class="inner">
+    <div class="medal sm side" data-reveal style="--halo:var(--coral)"><img src="img/3d/community.webp" alt=""></div>
+    <div class="kicker" data-reveal>מחלקת תוכן · הקהילות</div>
+    <h2 class="d1" data-reveal>פעמיים בשבוע, בעשרות אלפי בתים</h2>
+    <div class="stats two">
+      <div class="stat d1" data-reveal><span class="num-giant">18,000</span><p>עוקבים בערוצי הוואטסאפ שלנו</p></div>
+      <div class="stat d2" data-reveal><span class="num-giant">50,000</span><p>איש מקבלים את התוכן שלנו במייל, פעמיים בשבוע</p></div>
+    </div>
+    <div class="edge d3" data-reveal style="margin-top:2rem"><p class="lede">זה לב מערכת ההפצה של הארגון: תוכן חינוכי שנכנס הביתה בקביעות, בלי תלות באירוע או בהרצאה.</p></div>
+  </div>
+  <div class="slide-tag">05</div>
+</section>
+
+<!-- 06 מועדון הורים מחוברים -->
+<section class="slide bg-dots" id="s6">
+  <div class="inner">
+    <div class="medal sm side" data-reveal style="--halo:var(--gold)"><img src="img/3d/parents.webp" alt=""></div>
+    <div class="kicker" data-reveal>חדש השנה</div>
+    <h2 class="d1" data-reveal>מועדון הורים מחוברים</h2>
+    <p class="lede d1" data-reveal>פתחנו השנה מועדון מנויים להורים: מפגש חי בכל שבוע עם מומחה, קהילת הורים פעילה, וארכיון מלא של כל השיעורים בפורטל.</p>
+    <div class="stats two">
+      <div class="stat d2" data-reveal><span class="num-giant">250+</span><p>משפחות הצטרפו למועדון מאז ההשקה</p></div>
+      <div class="stat d3" data-reveal><span class="num-giant">14</span><p>מפגשים חיים התקיימו כבר</p></div>
+    </div>
+  </div>
+  <div class="slide-tag">06</div>
+</section>
+
+<!-- 07 תמצית החדשות -->
+<section class="slide bg-sweep" id="s7">
+  <div class="ribbon r1" style="opacity:.2"></div>
+  <div class="inner" style="text-align:center">
+    <div class="kicker" data-reveal>תמצית החדשות</div>
+    <div class="medal d1" data-reveal style="--halo:var(--teal)"><img src="img/3d/news.webp" alt=""></div>
+    <h2 class="d2" data-reveal>מהדורת החדשות שממשיכה לצמוח</h2>
+    <span class="num-giant d3" data-reveal style="display:block;margin-top:.6rem">50,000</span>
+    <p class="lede d4" data-reveal style="margin:1rem auto 0">עוקבים מקבלים היום את תמצית החדשות, והמגמה ממשיכה לעלות.</p>
+  </div>
+  <div class="slide-tag">07</div>
+</section>
+
+<!-- 08 עזים בקדושה -->
+<section class="slide dark bg-orbs" id="s8">
+  <div class="inner">
+    <div class="medal sm side" data-reveal style="--halo:var(--gold)"><img src="img/3d/scroll.webp" alt=""></div>
+    <div class="kicker" data-reveal>עזים בקדושה</div>
+    <h2 class="d1" data-reveal>המהפכה בעולם הישיבות</h2>
+    <p class="lede d1" data-reveal>הפעילות בישיבות ובמכינות ממשיכה להתרחב, ובכל שנה מצטרפים אלינו מוסדות חדשים.</p>
+    <div class="stats">
+      <div class="stat d2" data-reveal><span class="num-giant">74</span><p>ישיבות ומכינות בפעילות שוטפת</p></div>
+      <div class="stat d3" data-reveal><span class="num-giant">4,100+</span><p>תלמידים בתוכניות הליווי</p></div>
+      <div class="stat d4" data-reveal><span class="num-giant">12</span><p>אזורים, מהגולן ועד הנגב</p></div>
+    </div>
+  </div>
+  <div class="slide-tag">08</div>
+</section>
+
+<!-- 09 מוקד אור -->
+<section class="slide bg-dots" id="s9">
+  <div class="ribbon r2" style="opacity:.25"></div>
+  <div class="inner" style="text-align:center">
+    <div class="kicker" data-reveal>מוקד אור</div>
+    <div class="medal d1" data-reveal style="--halo:var(--coral)"><img src="img/3d/phone.webp" alt=""></div>
+    <h2 class="d2" data-reveal>קו פתוח לכל בית בישראל</h2>
+    <span class="num-giant d3" data-reveal style="display:block;margin-top:.6rem">20,000+</span>
+    <p class="lede d4" data-reveal style="margin:1rem auto 0">פניות בשנה. סינון, התקנות ומענה אישי לכל מי שמרים טלפון ומבקש עזרה.</p>
+  </div>
+  <div class="slide-tag">09</div>
+</section>
+
+<!-- 10 מבט קדימה -->
+<section class="slide bg-sweep" id="s10">
+  <div class="inner">
+    <div class="kicker" data-reveal>מבט קדימה</div>
+    <h2 class="d1" data-reveal>מה על השולחן לשנה הבאה</h2>
+    <p class="lede d1" data-reveal>ממש בימים אלה אנחנו כותבים את תוכניות העבודה לשנה הקרובה. שלושה כיוונים מרכזיים:</p>
+    <div class="trio">
+      <div class="tri d2" data-reveal>
+        <div class="medal" style="--halo:var(--coral)"><img src="img/3d/mic.webp" alt=""></div>
+        <h3>תוכן חדש</h3>
+        <p>לחדש ולהרחיב את התוכן הקיים, וליצור סדרות וקורסים חדשים</p>
+      </div>
+      <div class="tri d3" data-reveal>
+        <div class="medal" style="--halo:var(--teal)"><img src="img/3d/family.webp" alt=""></div>
+        <h3>הגדלת הקהילות</h3>
+        <p>להביא את התוכן לעוד עשרות אלפי בתים בוואטסאפ ובמייל</p>
+      </div>
+      <div class="tri d4" data-reveal>
+        <div class="medal" style="--halo:var(--gold)"><img src="img/3d/target.webp" alt=""></div>
+        <h3>שיווק והפצה</h3>
+        <p>לשווק את הקורסים והמועדון לקהלים שעוד לא הגענו אליהם</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-tag">10</div>
+</section>
+
+<!-- 11 סיום -->
+<section class="slide dark bg-orbs" id="s11">
+  <div class="ribbon r1" style="opacity:.3"></div><div class="ribbon r2 thin" style="opacity:.25"></div>
+  <div class="inner" style="text-align:center">
+    <h2 data-reveal style="font-size:clamp(2.1rem,4.4vw,3.6rem)">כל מספר כאן קרה בזכותכם</h2>
+    <p class="lede d1" data-reveal style="margin:1rem auto 0">מאחורי כל הרצאה, כל פנייה למוקד וכל משפחה שהצטרפה עומדת השותפות שלכם. תודה.</p>
+    <div class="d2" data-reveal><span class="cta-glow">ממשיכים יחד גם בשנה הבאה</span></div>
+    <p class="contact d3" data-reveal><b>לוקחים אחריות</b> · mmb.org.il · דעאל פסנטין, מנכ"ל</p>
+  </div>
+  <div class="slide-tag">11</div>
+</section>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('seen')})},{threshold:.35});
+document.querySelectorAll('.slide').forEach(s=>io.observe(s));
+
+if(location.search.includes('shot')){
+  document.querySelectorAll('.slide').forEach(s=>s.classList.add('seen'));
+  document.documentElement.style.scrollBehavior='auto';
+  document.documentElement.style.scrollSnapType='none';
+  const m=location.search.match(/slide=(\d+)/);
+  if(m){const H=window.innerHeight;
+    document.querySelectorAll('.slide').forEach(s=>s.style.height=H+'px');
+    document.body.style.transform='translateY(-'+((+m[1]-1)*H)+'px)';}
+}
+</script>
+</body>
+</html>
