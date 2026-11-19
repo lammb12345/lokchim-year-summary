@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "lokchim-build-kit": {
+      "source": {
+        "source": "github",
+        "repo": "lammb12345/lokchim-build-kit"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "lokchim-build@lokchim-build-kit": true
+  }
+}
